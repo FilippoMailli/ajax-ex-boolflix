@@ -17,7 +17,15 @@ $(document).ready(function() {
     var apiBaseUrl = 'https://api.themoviedb.org/3';
     var ricercaFilm = '/search/movie';
 
-    $('#pulsante-ricerca').click(function() {
+    $('#barra-ricerca').keypress(function(event) {
+         if(event.keyCode == 13) {
+              trovaFilm();
+         }
+    });
+    $('#pulsante-ricerca').click(trovaFilm);
+
+    function trovaFilm() {
+        $('.card-film').hide();
         var titoloCercato = $('#barra-ricerca').val();
         $.ajax({
             url: apiBaseUrl + ricercaFilm,
@@ -28,7 +36,6 @@ $(document).ready(function() {
             },
             method: 'GET',
             success: function (data) {
-                console.log(data);
                 var films = data.results;
                 for(var i = 0; i < films.length; i++) {
                     var film = films[i];
@@ -47,10 +54,7 @@ $(document).ready(function() {
             }
         })
         titoloCercato = $('#barra-ricerca').val('');
-    });
-
-
-
+    };
 
 
 });
