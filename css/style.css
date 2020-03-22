@@ -37,9 +37,10 @@ header {
     justify-content: space-between;
 }
 
-#pulsante-ricerca {
+#pulsante-ricerca-film,
+#pulsante-ricerca-serie {
     height: 35px;
-    width: 70px;
+    width: 150px;
     margin: 10px;
     padding: 3px;
     border: none;
@@ -50,11 +51,13 @@ header {
     box-shadow: 0 5px #2e2e2e;
 }
 
-#pulsante-ricerca:hover {
+#pulsante-ricerca-film:hover,
+#pulsante-ricerca-serie:hover {
     background-color: #8a0806;
 }
 
-#pulsante-ricerca:active {
+#pulsante-ricerca-film:active,
+#pulsante-ricerca-serie:active {
     background-color: #8a0806;
     box-shadow: 0 3px #262626;
     transform: translateY(2px);
@@ -66,6 +69,7 @@ header {
     color: black;
     border: none;
     padding: 5px;
+    padding-left: 10px;
 }
 
 #logo-boolflix {
@@ -74,11 +78,15 @@ header {
 }
 
 .container-film {
+    display: flex;
     width: 1600px;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 100px auto 0;
     color: white;
+    height: 100%;
+    padding: 10px;
+    align-items: center;
 }
 
 .card-film {

@@ -22,7 +22,9 @@ $(document).ready(function() {
               trovaFilm();
          }
     });
-    $('#pulsante-ricerca').click(trovaFilm);
+    $('#pulsante-ricerca-film').click(trovaFilm);
+
+    // $('#pulsante-ricerca-serie').click(trovaSerie);
 
     function trovaFilm() {
         $('.card-film').hide();
@@ -97,5 +99,9 @@ $(document).ready(function() {
             return 'https://www.countryflags.io/us/flat/64.png'
         }
     };
+
+    $('#barra-ricerca').click(function(){
+        $(this).addClass('allarga');
+    });
 
 });
