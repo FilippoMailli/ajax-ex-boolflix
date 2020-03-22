@@ -43,7 +43,8 @@ $(document).ready(function() {
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
-                        voto: film.vote_average
+                        voto: stars(film.vote_average),
+                        bandiera: flags(film.original_language)
                     }
                     var cardfilm = filmTemplate(titoloTemplate);
                     $('.container-film').append(cardfilm);
@@ -56,5 +57,45 @@ $(document).ready(function() {
         titoloCercato = $('#barra-ricerca').val('');
     };
 
+    function arrotondaVotazione(votazione){
+        var votoArrotondato = Math.floor(votazione);
+        return votoArrotondato / 2;
+    }
+
+    function stars(vote){
+        var stelle = Math.floor(vote / 2);
+        var stelline;
+        switch (stelle) {
+            case 0:
+                stelline = '&star;&star;&star;&star;&star;';
+                break;
+            case 1:
+                stelline = '&starf;&star;&star;&star;&star;';
+                break;
+            case 2:
+                stelline = '&starf;&starf;&star;&star;&star;';
+                break;
+            case 3:
+                stelline = '&starf;&starf;&starf;&star;&star;';
+                break;
+            case 4:
+                stelline = '&starf;&starf;&starf;&starf;&star;';
+                break;
+            case 5:
+                stelline = '&starf;&starf;&starf;&starf;&starf;';
+                break;
+            default:
+                stelline = 'Votazione non disponibile';
+        }
+        return stelline;
+    };      //funzione crea stelle del voto
+
+    function flags(nazione) {
+        if (nazione == 'it') {
+            return 'https://www.countryflags.io/it/flat/64.png';
+        } else {
+            return 'https://www.countryflags.io/us/flat/64.png'
+        }
+    };
 
 });
