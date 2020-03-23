@@ -96,15 +96,18 @@ header {
     flex-direction: column;
     align-items: center;
     width: 250px;
-    height: 300px;
-    padding: 10px;
+    height: 365px;
+    max-height: 365px;
+    overflow-y: hidden;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 #titolo-film,
 #titolo-serie {
     font-size: 16px;
-    margin-bottom: 25px
+    margin-bottom: 25px;
+    padding: 20px;
 }
 
 #titoloOriginale-film,
@@ -112,6 +115,7 @@ header {
 #titoloOriginale-serie,
 #lingua-serie {
     font-size: 12px;
+    padding: 0 20px;
 }
 
 #voto-film,
@@ -123,6 +127,7 @@ header {
 #stelline {
     font-size: 14px;
     transform: translateY(-1px);
+    color: orange;
 }
 
 #bandieraLingua {
@@ -131,4 +136,20 @@ header {
 
 #lingua-film {
     margin-top: 10px;
+}
+
+#poster-card {
+    position: absolute;
+    width: 248px;
+    height: 385px;
+}
+
+#poster-card:hover {
+    opacity: 0.1;
+}
+
+#blocco-overview {
+    font-size: 10px;
+    margin: 0 15px;
+    text-align: justify;
 }

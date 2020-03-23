@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>BOOLFLIX</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <script src="https://kit.fontawesome.com/6619c90159.js" crossorigin="anonymous"></script> -->
+        <script src="https://kit.fontawesome.com/6619c90159.js" crossorigin="anonymous"></script>
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
         <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,600,700,800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -33,10 +33,12 @@
                 <div class="card-film">
                     <h3 id="titolo-film">{{titolo}}</h3>
                     <span id="titoloOriginale-film">Titolo originale: {{titoloOriginale}}</span>
-                    <p id="lingua-film">Lingua originale: {{lingua}}</p>
+                    <p id="lingua-film">Lingua originale:</p>
                     <img id="bandieraLingua" src="{{bandiera}}">
-                    <span id="voto-film">Voto: </span>
-                    <span id="stelline" >{{{voto}}}</span>
+                    <span id="voto-film">Voto: {{voto}}/10</span>
+                    <span id="stelline">{{{voto_stelle}}}</span>
+                    <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    <img id="poster-card" src="{{poster}}" alt="{{titolo}}">
                 </div>
         </script>
 
@@ -44,10 +46,12 @@
                 <div class="card-serie">
                     <h3 id="titolo-serie">{{titolo}}</h3>
                     <span id="titoloOriginale-serie">Titolo originale: {{titoloOriginale}}</span>
-                    <p id="lingua-serie">Lingua originale: {{lingua}}</p>
+                    <p id="lingua-serie">Lingua originale:</p>
                     <img id="bandieraLingua" src="{{bandiera}}">
-                    <span id="voto-serie">Voto: </span>
-                    <span id="stelline" >{{{voto}}}</span>
+                    <span id="voto-serie">Voto: {{voto}}/10</span>
+                    <span id="stelline">{{{voto_stelle}}}</span>
+                    <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    <img id="poster-card" src="{{poster}}" alt="{{titolo}}">
                 </div>
         </script>
 

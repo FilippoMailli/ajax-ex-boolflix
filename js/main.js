@@ -20,6 +20,7 @@ $(document).ready(function() {
     var apiBaseUrl = 'https://api.themoviedb.org/3';
     var ricercaFilm = '/search/movie';
     var ricercaSerie = '/search/tv';
+    var posterpathIncompleta = 'https://image.tmdb.org/t/p/w342';
 
     $('#barra-ricerca').keypress(function(event) {
          if(event.keyCode == 13) {
@@ -50,8 +51,11 @@ $(document).ready(function() {
                         titolo: serie.name,
                         titoloOriginale: serie.original_name,
                         lingua: serie.original_language,
-                        voto: stars(serie.vote_average),
-                        bandiera: flags(serie.original_lenguage)
+                        voto: serie.vote_average,
+                        voto_stelle: stars(serie.vote_average),
+                        bandiera: flags(serie.original_lenguage),
+                        poster: creaPoster(posterpathIncompleta, serie.poster_path),
+                        overview: serie.overview
                     }
                     var cardserie = serieTemplate(titoloTemplateSerie);
                     $('.container-serie').append(cardserie);
@@ -84,8 +88,11 @@ $(document).ready(function() {
                         titolo: film.title,
                         titoloOriginale: film.original_title,
                         lingua: film.original_language,
-                        voto: stars(film.vote_average),
-                        bandiera: flags(film.original_language)
+                        voto: film.vote_average,
+                        voto_stelle: stars(film.vote_average),
+                        bandiera: flags(film.original_language),
+                        poster: creaPoster(posterpathIncompleta, film.poster_path),
+                        overview: film.overview
                     }
                     var cardfilm = filmTemplate(titoloTemplate);
                     $('.container-film').append(cardfilm);
@@ -98,38 +105,19 @@ $(document).ready(function() {
         titoloCercato = $('#barra-ricerca').val('');
     };
 
-    function arrotondaVotazione(votazione){
-        var votoArrotondato = Math.floor(votazione);
-        return votoArrotondato / 2;
-    }
 
-    function stars(vote){
-        var stelle = Math.floor(vote / 2);
-        var stelline;
-        switch (stelle) {
-            case 0:
-                stelline = '&star;&star;&star;&star;&star;';
-                break;
-            case 1:
-                stelline = '&starf;&star;&star;&star;&star;';
-                break;
-            case 2:
-                stelline = '&starf;&starf;&star;&star;&star;';
-                break;
-            case 3:
-                stelline = '&starf;&starf;&starf;&star;&star;';
-                break;
-            case 4:
-                stelline = '&starf;&starf;&starf;&starf;&star;';
-                break;
-            case 5:
-                stelline = '&starf;&starf;&starf;&starf;&starf;';
-                break;
-            default:
-                stelline = 'Votazione non disponibile';
-        }
-        return stelline;
-    };      //funzione crea stelle del voto
+    function stars(vote) {
+        vote = Math.floor(vote / 2);
+        var stringaStelle = '';
+            for(var i = 1; i <= 5; i ++) {
+                if( i <= vote ) {
+                    stringaStelle += '<i class="fas fa-star"></i>';
+                } else {
+                    stringaStelle += '<i class="far fa-star"></i>';
+                }
+            }
+            return stringaStelle;
+    };
 
     function flags(nazione) {
         switch (nazione) {
@@ -147,6 +135,14 @@ $(document).ready(function() {
                 break;
             default:
                 return 'https://www.countryflags.io/' + 'us' + '/flat/64.png';
+        }
+    };
+
+    function creaPoster(percorsoBase, aggiuntaPercorso){
+        if(aggiuntaPercorso !== null) {
+            return percorsoBase + aggiuntaPercorso;
+        } else {
+            return 'img/poster.jpg';
         }
     };
 
