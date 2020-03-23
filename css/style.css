@@ -77,7 +77,8 @@ header {
     cursor: pointer;
 }
 
-.container-film {
+.container-film,
+.container-serie {
     display: flex;
     width: 1600px;
     flex-wrap: wrap;
@@ -89,7 +90,8 @@ header {
     align-items: center;
 }
 
-.card-film {
+.card-film,
+.card-serie {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,17 +101,21 @@ header {
     text-align: center;
 }
 
-#titolo-film {
+#titolo-film,
+#titolo-serie {
     font-size: 16px;
     margin-bottom: 25px
 }
 
 #titoloOriginale-film,
-#lingua-film {
+#lingua-film,
+#titoloOriginale-serie,
+#lingua-serie {
     font-size: 12px;
 }
 
-#voto-film {
+#voto-film,
+#voto-serie {
     font-size: 10px;
     margin-top: 15px;
 }

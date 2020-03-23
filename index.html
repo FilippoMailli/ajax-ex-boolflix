@@ -25,6 +25,7 @@
             </header>
 
             <div class="container-film"></div>
+            <div class="container-serie"></div>
         </div>
 
 
@@ -35,6 +36,17 @@
                     <p id="lingua-film">Lingua originale: {{lingua}}</p>
                     <img id="bandieraLingua" src="{{bandiera}}">
                     <span id="voto-film">Voto: </span>
+                    <span id="stelline" >{{{voto}}}</span>
+                </div>
+        </script>
+
+        <script id="serie-template" type="text/x-handlebars-template">
+                <div class="card-serie">
+                    <h3 id="titolo-serie">{{titolo}}</h3>
+                    <span id="titoloOriginale-serie">Titolo originale: {{titoloOriginale}}</span>
+                    <p id="lingua-serie">Lingua originale: {{lingua}}</p>
+                    <img id="bandieraLingua" src="{{bandiera}}">
+                    <span id="voto-serie">Voto: </span>
                     <span id="stelline" >{{{voto}}}</span>
                 </div>
         </script>

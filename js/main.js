@@ -14,8 +14,12 @@ $(document).ready(function() {
     var source = $("#film-template").html();
     var filmTemplate = Handlebars.compile(source);
 
+    var sourceSerie = $("#serie-template").html();
+    var serieTemplate = Handlebars.compile(sourceSerie);
+
     var apiBaseUrl = 'https://api.themoviedb.org/3';
     var ricercaFilm = '/search/movie';
+    var ricercaSerie = '/search/tv';
 
     $('#barra-ricerca').keypress(function(event) {
          if(event.keyCode == 13) {
@@ -24,10 +28,45 @@ $(document).ready(function() {
     });
     $('#pulsante-ricerca-film').click(trovaFilm);
 
-    // $('#pulsante-ricerca-serie').click(trovaSerie);
+    $('#pulsante-ricerca-serie').click(trovaSerie);
+
+    function trovaSerie() {
+        $('.card-serie').remove();
+        $('.card-film').remove();
+        var titoloSerieCercato = $('#barra-ricerca').val();
+        $.ajax({
+            url: apiBaseUrl + ricercaSerie,
+            data: {
+                api_key: 'e99307154c6dfb0b4750f6603256716d',
+                query: titoloSerieCercato,
+                lenguage: 'it-IT',
+            },
+            method: 'GET',
+            success: function (dataSerie) {
+                var series = dataSerie.results;
+                for(var i = 0; i < series.length; i++) {
+                    var serie = series[i];
+                    var titoloTemplateSerie = {
+                        titolo: serie.name,
+                        titoloOriginale: serie.original_name,
+                        lingua: serie.original_language,
+                        voto: stars(serie.vote_average),
+                        bandiera: flags(serie.original_lenguage)
+                    }
+                    var cardserie = serieTemplate(titoloTemplateSerie);
+                    $('.container-serie').append(cardserie);
+                }
+            },
+            errore: function (err) {
+                alert('ERRORE GENERICO');
+            }
+        })
+        titoloSerieCercato = $('#barra-ricerca').val('');
+    };
 
     function trovaFilm() {
-        $('.card-film').hide();
+        $('.card-film').remove();
+        $('.card-serie').remove();
         var titoloCercato = $('#barra-ricerca').val();
         $.ajax({
             url: apiBaseUrl + ricercaFilm,
@@ -93,15 +132,22 @@ $(document).ready(function() {
     };      //funzione crea stelle del voto
 
     function flags(nazione) {
-        if (nazione == 'it') {
-            return 'https://www.countryflags.io/it/flat/64.png';
-        } else {
-            return 'https://www.countryflags.io/us/flat/64.png'
+        switch (nazione) {
+            case 'it':
+                return 'https://www.countryflags.io/' + nazione + '/flat/64.png';
+                break;
+            case 'fr':
+                return 'https://www.countryflags.io/' + nazione + '/flat/64.png';
+                break;
+            case 'es':
+                return 'https://www.countryflags.io/' + nazione + '/flat/64.png';
+                break;
+            case 'de':
+                return 'https://www.countryflags.io/' + nazione + '/flat/64.png';
+                break;
+            default:
+                return 'https://www.countryflags.io/' + 'us' + '/flat/64.png';
         }
     };
-
-    $('#barra-ricerca').click(function(){
-        $(this).addClass('allarga');
-    });
 
 });
