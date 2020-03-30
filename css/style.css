@@ -104,6 +104,7 @@ header {
     padding-left: 30px;
 }
 
+
 #titolo-film,
 #titolo-serie {
     font-size: 16px;
@@ -143,10 +144,6 @@ header {
     position: absolute;
     width: 285px;
     height: 385px;
-}
-
-#poster-card:hover {
-    opacity: 0.1;
 }
 
 #blocco-overview {

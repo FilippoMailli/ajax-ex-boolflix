@@ -31,26 +31,30 @@
 
         <script id="film-template" type="text/x-handlebars-template">
                 <div class="card-film">
-                    <h3 id="titolo-film">{{titolo}}</h3>
-                    <span id="titoloOriginale-film">Titolo originale: {{titoloOriginale}}</span>
-                    <p id="lingua-film">Lingua originale:</p>
-                    <img id="bandieraLingua" src="{{bandiera}}">
-                    <span id="voto-film">Voto: {{voto}}/10</span>
-                    <span id="stelline">{{{voto_stelle}}}</span>
-                    <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    <div class="testo-card">
+                        <h3 id="titolo-film">{{titolo}}</h3>
+                        <span id="titoloOriginale-film">Titolo originale: {{titoloOriginale}}</span>
+                        <p id="lingua-film">Lingua originale:</p>
+                        <img id="bandieraLingua" src="{{bandiera}}">
+                        <span id="voto-film">Voto: {{voto}}/10</span>
+                        <span id="stelline">{{{voto_stelle}}}</span>
+                        <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    </div>
                     <img id="poster-card" src="{{poster}}" alt="{{titolo}}">
                 </div>
         </script>
 
         <script id="serie-template" type="text/x-handlebars-template">
                 <div class="card-serie">
-                    <h3 id="titolo-serie">{{titolo}}</h3>
-                    <span id="titoloOriginale-serie">Titolo originale: {{titoloOriginale}}</span>
-                    <p id="lingua-serie">Lingua originale:</p>
-                    <img id="bandieraLingua" src="{{bandiera}}">
-                    <span id="voto-serie">Voto: {{voto}}/10</span>
-                    <span id="stelline">{{{voto_stelle}}}</span>
-                    <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    <div class="testo-card">
+                        <h3 id="titolo-serie">{{titolo}}</h3>
+                        <span id="titoloOriginale-serie">Titolo originale: {{titoloOriginale}}</span>
+                        <p id="lingua-serie">Lingua originale:</p>
+                        <img id="bandieraLingua" src="{{bandiera}}">
+                        <span id="voto-serie">Voto: {{voto}}/10</span>
+                        <span id="stelline">{{{voto_stelle}}}</span>
+                        <div id="blocco-overview"><span id="overview">{{overview}}</span></div>
+                    </div>
                     <img id="poster-card" src="{{poster}}" alt="{{titolo}}">
                 </div>
         </script>

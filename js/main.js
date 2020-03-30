@@ -27,6 +27,7 @@ $(document).ready(function() {
               trovaFilm();
          }
     });
+
     $('#pulsante-ricerca-film').click(trovaFilm);
 
     $('#pulsante-ricerca-serie').click(trovaSerie);
@@ -60,6 +61,12 @@ $(document).ready(function() {
                     var cardserie = serieTemplate(titoloTemplateSerie);
                     $('.container-serie').append(cardserie);
                 }
+                $('.card-serie').on('mouseenter', function(event){
+                    $(this).children('#poster-card').css("display", "none");
+                  });
+                  $('.card-serie').on('mouseleave', function(event){
+                    $(this).children('#poster-card').css("display", "block");
+                  });
             },
             errore: function (err) {
                 alert('ERRORE GENERICO');
@@ -97,10 +104,17 @@ $(document).ready(function() {
                     var cardfilm = filmTemplate(titoloTemplate);
                     $('.container-film').append(cardfilm);
                 }
+                $('.card-film').on('mouseenter', function(event){
+                    $(this).children('#poster-card').css("display", "none");
+                  });
+                  $('.card-film').on('mouseleave', function(event){
+                    $(this).children('#poster-card').css("display", "block");
+                  });
             },
             errore: function (err) {
                 alert('ERRORE GENERICO');
             }
+
         })
         titoloCercato = $('#barra-ricerca').val('');
     };
@@ -145,5 +159,7 @@ $(document).ready(function() {
             return 'img/poster.jpg';
         }
     };
+
+
 
 });
